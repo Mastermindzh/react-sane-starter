@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import {changeColor} from './../../actions/color-actions.jsx';
 
 class Footer extends Component {
   render() {
@@ -15,15 +13,7 @@ class Footer extends Component {
 }
 
 Footer.propTypes = {
-  color: PropTypes.string,
-  changeColor: PropTypes.func
+  color: PropTypes.string
 };
 
-function mapStateToProps(state) {
-  return {
-    color: state.colorReducer.color
-  };
-}
-
-export default connect(mapStateToProps, { changeColor
-})(Footer);
+export default Footer;

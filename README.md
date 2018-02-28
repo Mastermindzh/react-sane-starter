@@ -1,4 +1,53 @@
+# React-sane-starter
 
+A sane starting point for react+redux development.
+
+The starter app includes a working example app(+tests) which should help you get started fast.
+
+## Directory structure
+
+``` js
+.
+├── docker
+│   ├── dev  // Development docker-compose and dockerfile
+│   │   ├── docker-compose.yml
+│   │   └── Dockerfile
+│   └── prod // Production docker files
+│       ├── docker-compose.yml
+│       ├── Dockerfile
+│       └── default.conf // nginx conf for javascript SPA's
+│
+├── docs // directory for your documentation
+│
+├── src
+│   ├── actions // actions go here
+│   ├── assets // directory for statis assets
+│   ├── components // dumb components go here
+│   ├── constants // constants can be declared here
+│   ├── containers // smart components go here
+│   ├── reducers // reducers go here
+│   ├── store
+│   ├── styles // scss + css
+│   ├── tests // global test files
+│   ├── utils // utility classes / objects
+│   ├── favicon.ico
+│   ├── index.js
+│   ├── index.ejs
+│   └── webpack-public-path.js
+│
+├── tools // webpack tools, build tools, etc.
+│
+├── .babel.json
+├── .editorconfig
+├── .gitignore
+├── .istanbul.yml // test coverage config
+├── .jslintrc.json
+├── LICENSE
+├── package.json
+├── README.md
+├── webpack.config.dev.js
+└── webpack.config.prod.js
+```
 
 ## Docker
 

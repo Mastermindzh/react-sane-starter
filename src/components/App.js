@@ -3,9 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route, NavLink, Redirect } from 'react-router-dom';
 import Routes from './../constants/routes';
-import HomePage from './../containers/home-container.jsx';
-import AboutPage from './../containers/about-container.jsx';
-import ErrorPage from './../containers/404.jsx';
+import HomePage from './../containers/home/home-container.jsx';
+import AboutPage from './../containers/about/about-container.jsx';
+import ErrorPage from './../containers/error/error-container.jsx';
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -13,7 +13,7 @@ import ErrorPage from './../containers/404.jsx';
 
 class App extends React.Component {
   render() {
-    const activeStyle = { color: 'blue' };
+    const activeStyle = { color: 'red' };
     return (
       <div>
         <div>
