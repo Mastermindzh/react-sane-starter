@@ -1,5 +1,7 @@
 # React-sane-starter
 
+<p align="left" style="background:white;"><img  height="150"src="https://pbs.twimg.com/media/Cs4VTpdVIAAU_t3.jpg"/><img height="150" src = "https://ih0.redbubble.net/image.388514988.5586/flat,800x800,075,f.jpg" /> <img style="margin-left: 20px; background:white"height="150" src = "http://logo-logos.com/wp-content/uploads/2016/10/Docker_logo_logotype.png" /></p>
+
 A sane starting point for react+redux development.
 
 The starter app includes a working example app(+tests) which should help you get started fast.
