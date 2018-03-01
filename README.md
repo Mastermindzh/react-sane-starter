@@ -6,7 +6,38 @@ A sane starting point for react+redux development.
 
 The starter app includes a working example app(+tests) which should help you get started fast.
 
+## Getting started
+This starter can be run either with [Docker](https://www.docker.com/) + [Docker-compose](https://docs.docker.com/compose/) or with [Node](https://nodejs.org/) + [NPM](https://www.npmjs.com/).
+Take whichever route you like and follow the steps accordingly.
+
+Whichever way you take, the development app will become available at `localhost:3000` and it will automatically reload changes and run linting + tests on the code.
+
+<sub>Disclaimer: you might need node for some of the [commands](#available-commands)</sub>
+
+### with docker
+Simply run `npm run docker-run-dev` and wait for the magic to happen.
+
+### without docker
+If you want to run without Docker you'll need to have node (>= 4 ) and npm (>=) installed. If you've got those simply run the following commands in order:
+
+1. `npm install`
+2. `npm start`
+
+## Table of contents
+<!-- toc -->
+
+- [Directory structure](#directory-structure)
+- [Available commands](#available-commands)
+- [Running the production server](#running-the-production-server)
+- [Docker](#docker)
+- [Sane production builds](#sane-production-builds)
+- [Inspiration](#inspiration)
+- [Questions?](#questions)
+
+<!-- tocstop -->
+
 ## Directory structure
+The code block below covers the relevant directory structure and explains what the folders do.
 
 ``` js
 .
@@ -51,6 +82,48 @@ The starter app includes a working example app(+tests) which should help you get
 └── webpack.config.prod.js
 ```
 
+## Available commands
+This starter includes quite a few npm scripts to get you started, the commands you'll actually want to run yourself are:
+
+| **Command**         | **Description**                                                                          |
+|-----------------|----------------------------------------------------------------------------------------------|
+| start           | Runs the application                                                                         |
+| build           | Builds a production version of the application                                               |
+| docker-run-dev  | Runs the app in a docker container                                                           |
+| docker-run-prod | Runs the production version in a NGINX docker container                                      |
+| lint            | Runs the linter                                                                              |
+| test            | Runs the jest testing tool                                                                   |
+| test-cover      | Runs the jest testing tool with coverage info.                                               |
+| open-cover      | Runs the jest testing tool with coverage and opens the generated cover report in the browser |
+
+And the commands which you don't want/have to run yourself are:
+
+| **Command**       | **Description**                                                              |
+|-------------------|------------------------------------------------------------------------------|
+| preinstall        | Checks whether your installed node version is up to par                      |
+| postinstall       | Runs `docker-build-dev`                                                      |
+| prestart          | Executes the tools/startMessage.js script                                    |
+| prebuild          | Runs `lint`, `test` and `clean-dist` tasks                                   |
+| docker-build-dev  | Builds the development docker container                                      |
+| docker-build-prod | Builds the production docker container                                       |
+| open-src          | Little node script which runs the app + browsersync (also opens browser)     |
+| lint-watch        | Watches code changes and reruns the linter automatically (included in start) |
+| clean-dist        | Calls remove-dist and recreates an empty folder afterwards                   |
+| remove-dist       | Simply rimraf's (rm -rf) the dist folder                                     |
+| test-watch        | Watches code changes and reruns tests automatically (included in start)      |
+| analyze-bundle    | Checks whether your bundle has any errors                                    |
+
+## Running the production server
+This starter includes a production docker which is built on top of the NGINX Docker.
+The complete configuration for this container can be found under [docker/prod/default.conf](docker/prod/default.conf).
+
+The configuration boils down to the following procedure:
+
+1. Check whether a static file exists for the given url, if so serve it
+2. If it doesn't exist -> redirect to index.html
+
+It also ships with sane defaults for compressing assets and timeouts. IF you want to know the details, or change them, have a look at [docker/prod/default.conf](docker/prod/default.conf)
+
 ## Docker
 
 The starter includes a docker container/file for both the development build and the production build.
@@ -58,7 +131,6 @@ The starter includes a docker container/file for both the development build and 
 The production build runs an NGINX server which checks for a static file first and if it doesn't find one it will redirect to your app. (where a route should catch it)
 
 To run the development docker run: `npm run docker-run-dev` and to run the production build use: `npm run docker-run-prod`.
-
 
 ## Sane production builds
 One of the things that really annoys me about pretty much every webpack product is the bundling of assets.
@@ -68,6 +140,7 @@ Most webpack solutions choose to dump every asset into the root folder which , t
 
 This starter puts your assets in the assets folder and keeps whatever file structure you've made inside it.
 The "src/assets" tree in your development environment looks like like this:
+
 ```
 src/assets/
 └── images
@@ -89,7 +162,7 @@ dist
 └── main.ddc33abe456490476d44.js.map
 ```
 
-Much, much cleaner.
+Much neater if you ask me.
 
 ## Inspiration
 The starting point for this start was [react-slingshot by Corey House](https://github.com/coryhouse/react-slingshot).

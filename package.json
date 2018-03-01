@@ -10,7 +10,7 @@
     "postinstall": "npm run docker-build-dev",
 
     "prestart": "babel-node tools/startMessage.js",
-    "start": "concurrently -k -r -s first \"npm run test-watch\" \"npm run open:src\" \"npm run lint:watch\"",
+    "start": "concurrently -k -r -s first \"npm run test-watch\" \"npm run open-src\" \"npm run lint-watch\"",
 
     "prebuild": "npm run lint && npm run test && npm run clean-dist",
     "build": "babel-node tools/build.js",
@@ -20,10 +20,9 @@
     "docker-build-dev": "docker build -t project/node-dev -f docker/dev/Dockerfile docker/dev",
     "docker-build-prod": "docker build -t project/nginx-react -f docker/prod/Dockerfile docker/prod",
 
-    "open:src": "babel-node tools/srcServer.js",
-    "open:dist": "babel-node tools/distServer.js",
+    "open-src": "babel-node tools/srcServer.js",
     "lint": "esw webpack.config.* src tools --color",
-    "lint:watch": "npm run lint -- --watch",
+    "lint-watch": "npm run lint -- --watch",
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
     "test": "jest",
