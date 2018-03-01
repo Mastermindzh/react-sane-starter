@@ -132,6 +132,29 @@ The production build runs an NGINX server which checks for a static file first a
 
 To run the development docker run: `npm run docker-run-dev` and to run the production build use: `npm run docker-run-prod`.
 
+## Testing
+
+I recommend to place tests next to your react files with the following naming convention:
+
+`{react-file-name}.spec.js`
+
+This would mean that the file `about-container.jsx` would have a test right next to it named `about-container.spec.js`
+
+
+### Global tests
+Tests that can be reused should go into the "tests/global" folder and exported in the index.js file in the "test" directory.
+
+This allow you to import the test like so:
+
+```js
+import { testName } from './../../tests';
+```
+
+### Test app coverage
+The test app includes tests for all major functions (reducers, actions, etc) and should help you get started quickly.
+
+The test-coverage for the test app can be found in [docs/coverage.md](docs/coverage.md)
+
 ## Sane production builds
 One of the things that really annoys me about pretty much every webpack product is the bundling of assets.
 Now don't get me wrong, some stuff should be bundled (js/scss), but some stuff shouldn't (images/fonts).
