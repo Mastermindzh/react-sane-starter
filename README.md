@@ -23,6 +23,14 @@ If you want to run without Docker you'll need to have node (>= 4 ) and npm (>=) 
 1. `npm install`
 2. `npm start`
 
+### IMPORTANT FOR LINUX/MAC OS X USERS
+
+Please run the following command before attempting to work with this starter ([here's why](https://stackoverflow.com/questions/22475849/node-js-error-enospc/32600959#32600959)):
+
+``` cmd
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+```
+
 ## Table of contents
 
 <!-- toc -->
