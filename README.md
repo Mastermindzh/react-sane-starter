@@ -24,12 +24,16 @@ If you want to run without Docker you'll need to have node (>= 4 ) and npm (>=) 
 2. `npm start`
 
 ## Table of contents
+
 <!-- toc -->
 
 - [Directory structure](#directory-structure)
 - [Available commands](#available-commands)
 - [Running the production server](#running-the-production-server)
 - [Docker](#docker)
+- [Testing](#testing)
+  * [Global tests](#global-tests)
+  * [Test app coverage](#test-app-coverage)
 - [Sane production builds](#sane-production-builds)
 - [Inspiration](#inspiration)
 - [Questions?](#questions)
