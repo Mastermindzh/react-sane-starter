@@ -6,6 +6,11 @@ A sane starting point for react+redux development.
 
 The starter app includes a working example app(+tests) which should help you get started fast.
 
+## Branches
+This start has a few neat tricks up it's sleeve! Check out the branches below for some extra cool stuff!
+
+- [sphinx](https://github.com/Mastermindzh/react-sane-starter/tree/sphinx) - The sphinx branch includes sphinx documentation tools! Go check it out!
+
 ## Getting started
 This starter can be run either with [Docker](https://www.docker.com/) + [Docker-compose](https://docs.docker.com/compose/) or with [Node](https://nodejs.org/) + [NPM](https://www.npmjs.com/).
 Take whichever route you like and follow the steps accordingly.
@@ -143,6 +148,10 @@ The starter includes a docker container/file for both the development build and 
 The production build runs an NGINX server which checks for a static file first and if it doesn't find one it will redirect to your app. (where a route should catch it)
 
 To run the development docker run: `npm run docker-run-dev` and to run the production build use: `npm run docker-run-prod`.
+
+### fixes
+If you're an impatiant man(or woman) like me you'll probably run into docker-compose problems...
+If you do, try running `npm run docker-fix` to resolve the issues.
 
 ## Testing
 
