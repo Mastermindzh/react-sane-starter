@@ -7,7 +7,7 @@ A sane starting point for react+redux development.
 The starter app includes a working example app(+tests) which should help you get started fast.
 
 ## Branches
-This start has a few neat tricks up it's sleeve! Check out the branches below for some extra cool stuff!
+This starter has a few neat tricks up it's sleeve! Check out the branches below for some extra cool stuff!
 
 - [sphinx](https://github.com/Mastermindzh/react-sane-starter/tree/sphinx) - The sphinx branch includes sphinx documentation tools! Go check it out!
 
@@ -209,7 +209,7 @@ dist
 Much neater if you ask me.
 
 ## Inspiration
-The starting point for this start was [react-slingshot by Corey House](https://github.com/coryhouse/react-slingshot).
+The starting point for this starter was [react-slingshot by Corey House](https://github.com/coryhouse/react-slingshot).
 I have worked with react-slingshot for a while and it works really well but it has some quirks I don't quite like.
 This starter aims to resolve those quirks and provide a better starting point for new react apps.
 
