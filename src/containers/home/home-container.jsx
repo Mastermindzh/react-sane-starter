@@ -4,6 +4,8 @@ import { changeColor } from './../../actions/color-actions/color-actions.jsx';
 import PropTypes from "prop-types";
 import Footer from "./../../components/layout/footer.jsx";
 import {getRandomColor} from "./../../utils/colors/colors";
+import { Button } from 'rmwc/Button';
+import { Typography } from 'rmwc/Typography';
 
 export class HomePage extends Component {
 
@@ -13,9 +15,10 @@ export class HomePage extends Component {
 
     return (
       <div>
-        <h1>React sane starter</h1>
-        Current footer color: {color} <br />
-        <input id="changeColor" type="button" onClick={() => { changeColor(getRandomColor()); }} value="Change footer color" />
+        <Typography use="headline">React sane starter</Typography>
+        <Typography use="body1"><p>Current footer color: {color}</p></Typography>
+
+        <Button unelevated onClick={() => { changeColor(getRandomColor()); }}>Change color</Button>
         <Footer color={color}  />
       </div>
     );

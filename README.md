@@ -7,9 +7,13 @@ A sane starting point for react+redux development.
 The starter app includes a working example app(+tests) which should help you get started fast.
 
 ## Branches
-This starter has a few neat tricks up it's sleeve! Check out the branches below for some extra cool stuff!
+This starter has a few neat tricks up it's sleeve! Check out the other branches below for some extra cool stuff!
 
 - [sphinx](https://github.com/Mastermindzh/react-sane-starter/tree/sphinx) - The sphinx branch includes sphinx documentation tools! Go check it out!
+
+
+## Material design
+This branch includes the [material components for the web](https://material.io/components/web/), specifically it uses the react wrapper known as [RMWC](https://github.com/jamesmfriedman/rmwc) written by James m Friedman.
 
 ## Getting started
 This starter can be run either with [Docker](https://www.docker.com/) + [Docker-compose](https://docs.docker.com/compose/) or with [Node](https://nodejs.org/) + [NPM](https://www.npmjs.com/).

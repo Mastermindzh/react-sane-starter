@@ -1,13 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Footer from './../../components/layout/footer.jsx';
-
-import configureStore from 'redux-mock-store'
-
-import { Provider } from "react-redux";
-import { create } from "react-test-renderer";
-
-import  ConnectedHomePage, {HomePage}  from "./home-container.jsx";
+import   {HomePage}  from "./home-container.jsx";
 
 describe('<HomePage />', () => {
 
@@ -19,25 +13,25 @@ describe('<HomePage />', () => {
   });
 
 
-  it("should match snapshot", () => {
-    // const store = configureMockStore()({color: "red"});
-    const mockStore = configureStore([])
-    const store = mockStore({colorReducer: {color: "red"}});
+  // it("should match snapshot", () => {
+  //   // const store = configureMockStore()({color: "red"});
+  //   const mockStore = configureStore([])
+  //   const store = mockStore({colorReducer: {color: "red"}});
 
 
-    // color: PropTypes.string,
-    // changeColor: PropTypes.func
-    const component = create(
-      <Provider store={store}>
-        <ConnectedHomePage />
-      </Provider>
-    );
+  //   // color: PropTypes.string,
+  //   // changeColor: PropTypes.func
+  //   const component = create(
+  //     <Provider store={store}>
+  //       <ConnectedHomePage />
+  //     </Provider>
+  //   );
 
-    const tree = component.toJSON();
+  //   const tree = component.toJSON();
 
-    expect(tree).toMatchSnapshot();
+  //   expect(tree).toMatchSnapshot();
 
-  });
+  // });
 });
 
 
