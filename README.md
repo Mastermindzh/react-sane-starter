@@ -9,6 +9,7 @@ The starter app includes a working example app(+tests) which should help you get
 ## Branches
 This starter has a few neat tricks up it's sleeve! Check out the branches below for some extra cool stuff!
 
+- [material-design](https://github.com/Mastermindzh/react-sane-starter/tree/material-design) - This branch includes material-ui
 - [sphinx](https://github.com/Mastermindzh/react-sane-starter/tree/sphinx) - The sphinx branch includes sphinx documentation tools! Go check it out!
 
 ## Getting started

@@ -2,7 +2,7 @@ version: "2"
 services:
 
   website:
-    image: project/nginx-react
+    build: ./Dockerfile
     volumes:
       - ./../../dist:/app
     ports:

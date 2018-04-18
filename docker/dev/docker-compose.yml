@@ -2,7 +2,9 @@ version: "2"
 services:
 
   website:
-    image: project/node-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - ./../../:/app
     ports:
