@@ -1,30 +1,42 @@
 import React, { Component } from "react";
-import { Drawer, DrawerContent } from "rmwc/Drawer";
-import { ListItem, ListItemText, ListItemGraphic } from "rmwc/List";
+import PropTypes from 'prop-types';
+
+import Drawer from 'material-ui/Drawer';
+
 import { NavLink } from "react-router-dom";
-import PropTypes from "prop-types";
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import Icon from 'material-ui/Icon';
 
 class AppDrawer extends Component {
+
   render() {
     return (
       <div>
-        <Drawer temporary open={this.props.open}>
-          <DrawerContent>
-            {this.props.items.map(item => {
-              return (
-                <NavLink onClick={() => this.props.onClose()} className="drawerLink" key={item.link} to={item.link} activeStyle={this.props.activeStyle} >
-                  <ListItem>
-                    {item.icon ? (
-                      <ListItemGraphic>{item.icon}</ListItemGraphic>
-                    ) : (
-                      ""
-                    )}
-                    <ListItemText style={{marginBottom: "-3px"}}>{item.text}</ListItemText>
-                  </ListItem>
-                </NavLink>
-              );
-            })}
-          </DrawerContent>
+
+        <Drawer open={this.props.open} onClose={() => this.props.onClose()}>
+          <div
+            tabIndex={0}
+            role="button"
+          >
+            <List>
+              {this.props.items.map(item => {
+                return (
+                  <NavLink onClick={() => this.props.onClose()} className="drawerLink" key={item.link} to={item.link} activeStyle={this.props.activeStyle} >
+
+                    <ListItem button>
+                      {item.icon ? (
+                        <ListItemIcon><Icon>{item.icon}</Icon></ListItemIcon>
+                      ) : (
+                          ""
+                        )}
+                      <ListItemText>{item.text}</ListItemText>
+                    </ListItem>
+                  </NavLink>
+                );
+              })}
+            </List>
+
+          </div>
         </Drawer>
       </div>
     );

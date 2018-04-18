@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { changeColor } from './../../actions/color-actions/color-actions.jsx';
 import PropTypes from "prop-types";
 import Footer from "./../../components/layout/footer.jsx";
-import {getRandomColor} from "./../../utils/colors/colors";
-import { Button } from 'rmwc/Button';
-import { Typography } from 'rmwc/Typography';
+import { getRandomColor } from "./../../utils/colors/colors";
+import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
 
 export class HomePage extends Component {
 
@@ -15,11 +15,17 @@ export class HomePage extends Component {
 
     return (
       <div>
-        <Typography use="headline">React sane starter</Typography>
-        <Typography use="body1"><p>Current footer color: {color}</p></Typography>
+        <Typography variant="title" gutterBottom>
+          React sane starter
+      </Typography>
+        <Typography variant="body1" gutterBottom>
+          Current footer color: {color}
+        </Typography>
 
-        <Button unelevated onClick={() => { changeColor(getRandomColor()); }}>Change color</Button>
-        <Footer color={color}  />
+        <Button variant="raised" color="primary" onClick={() => { changeColor(getRandomColor()) }} >
+          Change color
+      </Button>
+        <Footer color={color} />
       </div>
     );
   }

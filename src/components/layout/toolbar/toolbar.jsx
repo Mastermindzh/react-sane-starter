@@ -1,15 +1,10 @@
 import React, { Component } from "react";
-import {
-  Toolbar,
-  ToolbarRow,
-  ToolbarSection,
-  ToolbarTitle,
-  ToolbarMenuIcon,
-  ToolbarIcon,
-  ToolbarFixedAdjust
-} from "rmwc/Toolbar";
-import Ripple from "rmwc/Ripple";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+import IconButton from 'material-ui/IconButton';
+import Icon from 'material-ui/Icon';
 
 class NavBar extends Component {
 
@@ -20,28 +15,16 @@ class NavBar extends Component {
   render() {
     return (
       <div>
-        <Toolbar fixed>
-          <ToolbarRow>
-            <ToolbarSection alignStart>
-              <Ripple>
-                <ToolbarMenuIcon
-                  use="menu"
-                  style={{ color: "inherit", alignSelf: "center" }}
-                  onClick={this.props.menuIconOnClick != undefined ? this.props.menuIconOnClick : () => {alert('hello')}}
-                  className="material-icons mdc-ripple-upgraded--unbounded mdc-ripple-upgraded mdc-ripple-surface  mdc-toolbar__menu-icon"
-                />
-              </Ripple>
-
-              <ToolbarTitle>React-sane-starter</ToolbarTitle>
-            </ToolbarSection>
-
-            <ToolbarSection alignEnd>
-              <ToolbarIcon use="save" />
-              <ToolbarIcon use="print" />
-            </ToolbarSection>
-          </ToolbarRow>
-        </Toolbar>
-        <ToolbarFixedAdjust />
+        <AppBar position="static">
+          <Toolbar>
+          <IconButton color="inherit" aria-label="Menu" onClick={this.props.menuIconOnClick != undefined ? this.props.menuIconOnClick : () => { alert('hello') }}>
+              <Icon>menu</Icon>
+            </IconButton>
+            <Typography variant="title" color="inherit" >
+              React-sane-starter
+          </Typography>
+          </Toolbar>
+        </AppBar>
       </div>
     );
   }
