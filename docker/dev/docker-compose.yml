@@ -1,10 +1,8 @@
 version: "2"
 services:
 
-  website:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  frontend:
+    build: ./../images/node
     volumes:
       - ./../../:/app
     ports:

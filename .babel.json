@@ -320,7 +320,7 @@
         "import {chalkSuccess} from './chalkConfig';\n\n/* eslint-disable no-console */\n\nconsole.log(chalkSuccess('Starting app in dev mode...'));\n"
       ]
     },
-    "mtime": 1524078728857
+    "mtime": 1524145601292
   },
   "{\"filename\":\"/app/tools/chalkConfig.js\",\"env\":{\"development\":{\"plugins\":[]}},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"transforms\":[{\"transform\":\"/app/node_modules/react-transform-hmr/lib/index.js\",\"imports\":[\"react\"],\"locals\":[\"module\"]},{\"transform\":\"/app/node_modules/react-transform-catch-errors/lib/index.js\",\"imports\":[\"react\",\"/app/node_modules/redbox-react/lib/index.js\"]}]}],[[],null],[[],null],[[],null],[[],null],[[],{\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"sourceRoot\":\"/app/tools\",\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false,\"parserOpts\":false,\"generatorOpts\":false}:6.26.0": {
     "metadata": {
@@ -677,7 +677,7 @@
         "// Centralized configuration for chalk, which is used to add color to console.log statements.\nimport chalk from 'chalk';\nexport const chalkError = chalk.red;\nexport const chalkSuccess = chalk.green;\nexport const chalkWarning = chalk.yellow;\nexport const chalkProcessing = chalk.blue;\n"
       ]
     },
-    "mtime": 1524078728857
+    "mtime": 1524145601292
   },
   "{\"filename\":\"/app/tools/srcServer.js\",\"env\":{\"development\":{\"plugins\":[]}},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"transforms\":[{\"transform\":\"/app/node_modules/react-transform-hmr/lib/index.js\",\"imports\":[\"react\"],\"locals\":[\"module\"]},{\"transform\":\"/app/node_modules/react-transform-catch-errors/lib/index.js\",\"imports\":[\"react\",\"/app/node_modules/redbox-react/lib/index.js\"]}]}],[[],null],[[],null],[[],null],[[],null],[[],{\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"sourceRoot\":\"/app/tools\",\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false,\"parserOpts\":false,\"generatorOpts\":false}:6.26.0": {
     "metadata": {
@@ -1084,7 +1084,7 @@
         "// This file configures the development web server\n// which supports hot reloading and synchronized testing.\n\n// Require Browsersync along with webpack and middleware for it\nimport browserSync from 'browser-sync';\n// Required for react-router browserHistory\n// see https://github.com/BrowserSync/browser-sync/issues/204#issuecomment-102623643\nimport historyApiFallback from 'connect-history-api-fallback';\nimport webpack from 'webpack';\nimport webpackDevMiddleware from 'webpack-dev-middleware';\nimport webpackHotMiddleware from 'webpack-hot-middleware';\nimport config from '../webpack.config.dev';\n\nconst bundler = webpack(config);\n\n// Run Browsersync and use middleware for Hot Module Replacement\nbrowserSync({\n  port: 3000,\n  ui: {\n    port: 3001\n  },\n  server: {\n    baseDir: 'src',\n\n    middleware: [\n      historyApiFallback(),\n\n      webpackDevMiddleware(bundler, {\n        // Dev middleware can't access config, so we provide publicPath\n        publicPath: config.output.publicPath,\n\n        // These settings suppress noisy webpack output so only errors are displayed to the console.\n        noInfo: true,\n        quiet: false,\n        stats: {\n          assets: false,\n          colors: true,\n          version: false,\n          hash: false,\n          timings: false,\n          chunks: false,\n          chunkModules: false\n        },\n\n        // for other settings see\n        // https://webpack.js.org/guides/development/#using-webpack-dev-middleware\n      }),\n\n      // bundler should be the same as above\n      webpackHotMiddleware(bundler)\n    ]\n  },\n\n  // no need to watch '*.js' here, webpack will take care of it for us,\n  // including full page reloads if HMR won't work\n  files: [\n    'src/*.html'\n  ]\n});\n"
       ]
     },
-    "mtime": 1524078728857
+    "mtime": 1524145601292
   },
   "{\"filename\":\"/app/webpack.config.dev.js\",\"env\":{\"development\":{\"plugins\":[]}},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"transforms\":[{\"transform\":\"/app/node_modules/react-transform-hmr/lib/index.js\",\"imports\":[\"react\"],\"locals\":[\"module\"]},{\"transform\":\"/app/node_modules/react-transform-catch-errors/lib/index.js\",\"imports\":[\"react\",\"/app/node_modules/redbox-react/lib/index.js\"]}]}],[[],null],[[],null],[[],null],[[],null],[[],{\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"sourceRoot\":\"/app\",\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false,\"parserOpts\":false,\"generatorOpts\":false}:6.26.0": {
     "metadata": {
@@ -1468,6 +1468,813 @@
         "import webpack from 'webpack';\nimport HtmlWebpackPlugin from 'html-webpack-plugin';\nimport path from 'path';\n\nexport default {\n  resolve: {\n    extensions: ['*', '.js', '.jsx', '.json']\n  },\n  devtool: 'cheap-module-eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/\n  entry: [\n    // must be first entry to properly set public path\n    './src/webpack-public-path',\n    'react-hot-loader/patch',\n    'webpack-hot-middleware/client?reload=true',\n    path.resolve(__dirname, 'src/index.js') // Defining path seems necessary for this to work consistently on Windows machines.\n  ],\n  target: 'web',\n  output: {\n    path: path.resolve(__dirname, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.\n    publicPath: '/',\n    filename: 'bundle.js'\n  },\n  plugins: [\n    new webpack.DefinePlugin({\n      'process.env.NODE_ENV': JSON.stringify('development'), // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)\n      __DEV__: true\n    }),\n    new webpack.HotModuleReplacementPlugin(),\n    new webpack.NoEmitOnErrorsPlugin(),\n    new HtmlWebpackPlugin({     // Create HTML file that includes references to bundled CSS and JS.\n      template: 'src/index.ejs',\n      minify: {\n        removeComments: true,\n        collapseWhitespace: true\n      },\n      inject: true\n    })\n  ],\n  module: {\n    rules: [\n      {\n        test: /\\.jsx?$/,\n        exclude: /node_modules/,\n        use: ['babel-loader']\n      },\n      {\n        test: /\\.eot(\\?v=\\d+.\\d+.\\d+)?$/,\n        use: ['file-loader']\n      },\n      {\n        test: /\\.woff(2)?(\\?v=[0-9]\\.[0-9]\\.[0-9])?$/,\n        use: [\n          {\n            loader: 'url-loader',\n            options: {\n              limit: 10000,\n              mimetype: 'application/font-woff'\n            }\n          }\n        ]\n      },\n      {\n        test: /\\.[ot]tf(\\?v=\\d+.\\d+.\\d+)?$/,\n        use: [\n          {\n            loader: 'url-loader',\n            options: {\n              limit: 10000,\n              mimetype: 'application/octet-stream'\n            }\n          }\n        ]\n      },\n      {\n        test: /\\.svg(\\?v=\\d+\\.\\d+\\.\\d+)?$/,\n        use: [\n          {\n            loader: 'url-loader',\n            options: {\n              limit: 10000,\n              mimetype: 'image/svg+xml'\n            }\n          }\n        ]\n      },\n      {\n        test: /\\.(jpe?g|png|gif|ico)$/i,\n        use: [\n          {\n            loader: 'file-loader',\n            options: {\n              name: '[name].[ext]'\n            }\n          }\n        ]\n      },\n      {\n        test: /(\\.css|\\.scss|\\.sass)$/,\n        use: [\n          'style-loader',\n          {\n            loader: 'css-loader',\n            options: {\n              sourceMap: true\n            }\n          }, {\n            loader: 'postcss-loader',\n            options: {\n              plugins: () => [\n                require('autoprefixer')\n              ],\n              sourceMap: true\n            }\n          }, {\n            loader: 'sass-loader',\n            options: {\n              includePaths: [path.resolve(__dirname, 'src', 'scss')],\n              sourceMap: true\n            }\n          }\n        ]\n      }\n    ]\n  }\n};\n"
       ]
     },
-    "mtime": 1524078728857
+    "mtime": 1524145601292
+  },
+  "{\"filename\":\"/app/tools/build.js\",\"env\":{\"development\":{\"plugins\":[]}},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"transforms\":[{\"transform\":\"/app/node_modules/react-transform-hmr/lib/index.js\",\"imports\":[\"react\"],\"locals\":[\"module\"]},{\"transform\":\"/app/node_modules/react-transform-catch-errors/lib/index.js\",\"imports\":[\"react\",\"/app/node_modules/redbox-react/lib/index.js\"]}]}],[[],null],[[],null],[[],null],[[],null],[[],{\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"sourceRoot\":\"/app/tools\",\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false,\"parserOpts\":false,\"generatorOpts\":false}:6.26.0": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [
+          {
+            "source": "webpack",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "webpack"
+              }
+            ]
+          },
+          {
+            "source": "../webpack.config.prod",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "config"
+              }
+            ]
+          },
+          {
+            "source": "./chalkConfig",
+            "imported": [
+              "chalkError",
+              "chalkSuccess",
+              "chalkWarning",
+              "chalkProcessing"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "chalkError",
+                "local": "chalkError"
+              },
+              {
+                "kind": "named",
+                "imported": "chalkSuccess",
+                "local": "chalkSuccess"
+              },
+              {
+                "kind": "named",
+                "imported": "chalkWarning",
+                "local": "chalkWarning"
+              },
+              {
+                "kind": "named",
+                "imported": "chalkProcessing",
+                "local": "chalkProcessing"
+              }
+            ]
+          }
+        ],
+        "exports": {
+          "exported": [],
+          "specifiers": []
+        }
+      }
+    },
+    "options": {
+      "filename": "/app/tools/build.js",
+      "filenameRelative": "/app/tools/build.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "transforms": [
+              {
+                "transform": "/app/node_modules/react-transform-hmr/lib/index.js",
+                "imports": [
+                  "react"
+                ],
+                "locals": [
+                  "module"
+                ]
+              },
+              {
+                "transform": "/app/node_modules/react-transform-catch-errors/lib/index.js",
+                "imports": [
+                  "react",
+                  "/app/node_modules/redbox-react/lib/index.js"
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMaps": "both",
+      "sourceMapTarget": "build.js",
+      "sourceFileName": "build.js",
+      "sourceRoot": "/app/tools",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleRoot": "/app/tools",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "parserOpts": false,
+      "generatorOpts": false,
+      "basename": "build"
+    },
+    "ignored": false,
+    "code": "'use strict';\n\nvar _webpack = require('webpack');\n\nvar _webpack2 = _interopRequireDefault(_webpack);\n\nvar _webpackConfig = require('../webpack.config.prod');\n\nvar _webpackConfig2 = _interopRequireDefault(_webpackConfig);\n\nvar _chalkConfig = require('./chalkConfig');\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nprocess.env.NODE_ENV = 'production'; // this assures React is built in prod mode and that the Babel dev config doesn't apply.\n\n// More info on Webpack's Node API here: https://webpack.js.org/api/node/\n// Allowing console calls below since this is a build file.\n/* eslint-disable no-console */\nconsole.log((0, _chalkConfig.chalkProcessing)('Generating minified bundle. This will take a moment...'));\n\n(0, _webpack2.default)(_webpackConfig2.default).run(function (error, stats) {\n  if (error) {\n    // so a fatal error occurred. Stop here.\n    console.log((0, _chalkConfig.chalkError)(error));\n    return 1;\n  }\n\n  var jsonStats = stats.toJson();\n\n  if (jsonStats.hasErrors) {\n    return jsonStats.errors.map(function (error) {\n      return console.log((0, _chalkConfig.chalkError)(error));\n    });\n  }\n\n  if (jsonStats.hasWarnings) {\n    console.log((0, _chalkConfig.chalkWarning)('Webpack generated the following warnings: '));\n    jsonStats.warnings.map(function (warning) {\n      return console.log((0, _chalkConfig.chalkWarning)(warning));\n    });\n  }\n\n  console.log('Webpack stats: ' + stats);\n\n  // if we got this far, the build succeeded.\n  console.log((0, _chalkConfig.chalkSuccess)('Your app is compiled in production mode in /dist. It\\'s ready to roll!'));\n\n  return 0;\n});\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJ1aWxkLmpzIl0sIm5hbWVzIjpbInByb2Nlc3MiLCJlbnYiLCJOT0RFX0VOViIsImNvbnNvbGUiLCJsb2ciLCJydW4iLCJlcnJvciIsInN0YXRzIiwianNvblN0YXRzIiwidG9Kc29uIiwiaGFzRXJyb3JzIiwiZXJyb3JzIiwibWFwIiwiaGFzV2FybmluZ3MiLCJ3YXJuaW5ncyIsIndhcm5pbmciXSwibWFwcGluZ3MiOiI7O0FBR0E7Ozs7QUFDQTs7OztBQUNBOzs7O0FBRUFBLFFBQVFDLEdBQVIsQ0FBWUMsUUFBWixHQUF1QixZQUF2QixDLENBQXFDOztBQVByQztBQUNBO0FBQ0E7QUFPQUMsUUFBUUMsR0FBUixDQUFZLGtDQUFnQix3REFBaEIsQ0FBWjs7QUFFQSxnREFBZ0JDLEdBQWhCLENBQW9CLFVBQUNDLEtBQUQsRUFBUUMsS0FBUixFQUFrQjtBQUNwQyxNQUFJRCxLQUFKLEVBQVc7QUFBRTtBQUNYSCxZQUFRQyxHQUFSLENBQVksNkJBQVdFLEtBQVgsQ0FBWjtBQUNBLFdBQU8sQ0FBUDtBQUNEOztBQUVELE1BQU1FLFlBQVlELE1BQU1FLE1BQU4sRUFBbEI7O0FBRUEsTUFBSUQsVUFBVUUsU0FBZCxFQUF5QjtBQUN2QixXQUFPRixVQUFVRyxNQUFWLENBQWlCQyxHQUFqQixDQUFxQjtBQUFBLGFBQVNULFFBQVFDLEdBQVIsQ0FBWSw2QkFBV0UsS0FBWCxDQUFaLENBQVQ7QUFBQSxLQUFyQixDQUFQO0FBQ0Q7O0FBRUQsTUFBSUUsVUFBVUssV0FBZCxFQUEyQjtBQUN6QlYsWUFBUUMsR0FBUixDQUFZLCtCQUFhLDRDQUFiLENBQVo7QUFDQUksY0FBVU0sUUFBVixDQUFtQkYsR0FBbkIsQ0FBdUI7QUFBQSxhQUFXVCxRQUFRQyxHQUFSLENBQVksK0JBQWFXLE9BQWIsQ0FBWixDQUFYO0FBQUEsS0FBdkI7QUFDRDs7QUFFRFosVUFBUUMsR0FBUixxQkFBOEJHLEtBQTlCOztBQUVBO0FBQ0FKLFVBQVFDLEdBQVIsQ0FBWSwrQkFBYSx3RUFBYixDQUFaOztBQUVBLFNBQU8sQ0FBUDtBQUNELENBdkJEIiwiZmlsZSI6ImJ1aWxkLmpzIiwic291cmNlUm9vdCI6Ii9hcHAvdG9vbHMiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBNb3JlIGluZm8gb24gV2VicGFjaydzIE5vZGUgQVBJIGhlcmU6IGh0dHBzOi8vd2VicGFjay5qcy5vcmcvYXBpL25vZGUvXG4vLyBBbGxvd2luZyBjb25zb2xlIGNhbGxzIGJlbG93IHNpbmNlIHRoaXMgaXMgYSBidWlsZCBmaWxlLlxuLyogZXNsaW50LWRpc2FibGUgbm8tY29uc29sZSAqL1xuaW1wb3J0IHdlYnBhY2sgZnJvbSAnd2VicGFjayc7XG5pbXBvcnQgY29uZmlnIGZyb20gJy4uL3dlYnBhY2suY29uZmlnLnByb2QnO1xuaW1wb3J0IHtjaGFsa0Vycm9yLCBjaGFsa1N1Y2Nlc3MsIGNoYWxrV2FybmluZywgY2hhbGtQcm9jZXNzaW5nfSBmcm9tICcuL2NoYWxrQ29uZmlnJztcblxucHJvY2Vzcy5lbnYuTk9ERV9FTlYgPSAncHJvZHVjdGlvbic7IC8vIHRoaXMgYXNzdXJlcyBSZWFjdCBpcyBidWlsdCBpbiBwcm9kIG1vZGUgYW5kIHRoYXQgdGhlIEJhYmVsIGRldiBjb25maWcgZG9lc24ndCBhcHBseS5cblxuY29uc29sZS5sb2coY2hhbGtQcm9jZXNzaW5nKCdHZW5lcmF0aW5nIG1pbmlmaWVkIGJ1bmRsZS4gVGhpcyB3aWxsIHRha2UgYSBtb21lbnQuLi4nKSk7XG5cbndlYnBhY2soY29uZmlnKS5ydW4oKGVycm9yLCBzdGF0cykgPT4ge1xuICBpZiAoZXJyb3IpIHsgLy8gc28gYSBmYXRhbCBlcnJvciBvY2N1cnJlZC4gU3RvcCBoZXJlLlxuICAgIGNvbnNvbGUubG9nKGNoYWxrRXJyb3IoZXJyb3IpKTtcbiAgICByZXR1cm4gMTtcbiAgfVxuXG4gIGNvbnN0IGpzb25TdGF0cyA9IHN0YXRzLnRvSnNvbigpO1xuXG4gIGlmIChqc29uU3RhdHMuaGFzRXJyb3JzKSB7XG4gICAgcmV0dXJuIGpzb25TdGF0cy5lcnJvcnMubWFwKGVycm9yID0+IGNvbnNvbGUubG9nKGNoYWxrRXJyb3IoZXJyb3IpKSk7XG4gIH1cblxuICBpZiAoanNvblN0YXRzLmhhc1dhcm5pbmdzKSB7XG4gICAgY29uc29sZS5sb2coY2hhbGtXYXJuaW5nKCdXZWJwYWNrIGdlbmVyYXRlZCB0aGUgZm9sbG93aW5nIHdhcm5pbmdzOiAnKSk7XG4gICAganNvblN0YXRzLndhcm5pbmdzLm1hcCh3YXJuaW5nID0+IGNvbnNvbGUubG9nKGNoYWxrV2FybmluZyh3YXJuaW5nKSkpO1xuICB9XG5cbiAgY29uc29sZS5sb2coYFdlYnBhY2sgc3RhdHM6ICR7c3RhdHN9YCk7XG5cbiAgLy8gaWYgd2UgZ290IHRoaXMgZmFyLCB0aGUgYnVpbGQgc3VjY2VlZGVkLlxuICBjb25zb2xlLmxvZyhjaGFsa1N1Y2Nlc3MoJ1lvdXIgYXBwIGlzIGNvbXBpbGVkIGluIHByb2R1Y3Rpb24gbW9kZSBpbiAvZGlzdC4gSXRcXCdzIHJlYWR5IHRvIHJvbGwhJykpO1xuXG4gIHJldHVybiAwO1xufSk7XG4iXX0=",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "build.js"
+      ],
+      "names": [
+        "process",
+        "env",
+        "NODE_ENV",
+        "console",
+        "log",
+        "run",
+        "error",
+        "stats",
+        "jsonStats",
+        "toJson",
+        "hasErrors",
+        "errors",
+        "map",
+        "hasWarnings",
+        "warnings",
+        "warning"
+      ],
+      "mappings": ";;AAGA;;;;AACA;;;;AACA;;;;AAEAA,QAAQC,GAAR,CAAYC,QAAZ,GAAuB,YAAvB,C,CAAqC;;AAPrC;AACA;AACA;AAOAC,QAAQC,GAAR,CAAY,kCAAgB,wDAAhB,CAAZ;;AAEA,gDAAgBC,GAAhB,CAAoB,UAACC,KAAD,EAAQC,KAAR,EAAkB;AACpC,MAAID,KAAJ,EAAW;AAAE;AACXH,YAAQC,GAAR,CAAY,6BAAWE,KAAX,CAAZ;AACA,WAAO,CAAP;AACD;;AAED,MAAME,YAAYD,MAAME,MAAN,EAAlB;;AAEA,MAAID,UAAUE,SAAd,EAAyB;AACvB,WAAOF,UAAUG,MAAV,CAAiBC,GAAjB,CAAqB;AAAA,aAAST,QAAQC,GAAR,CAAY,6BAAWE,KAAX,CAAZ,CAAT;AAAA,KAArB,CAAP;AACD;;AAED,MAAIE,UAAUK,WAAd,EAA2B;AACzBV,YAAQC,GAAR,CAAY,+BAAa,4CAAb,CAAZ;AACAI,cAAUM,QAAV,CAAmBF,GAAnB,CAAuB;AAAA,aAAWT,QAAQC,GAAR,CAAY,+BAAaW,OAAb,CAAZ,CAAX;AAAA,KAAvB;AACD;;AAEDZ,UAAQC,GAAR,qBAA8BG,KAA9B;;AAEA;AACAJ,UAAQC,GAAR,CAAY,+BAAa,wEAAb,CAAZ;;AAEA,SAAO,CAAP;AACD,CAvBD",
+      "file": "build.js",
+      "sourceRoot": "/app/tools",
+      "sourcesContent": [
+        "// More info on Webpack's Node API here: https://webpack.js.org/api/node/\n// Allowing console calls below since this is a build file.\n/* eslint-disable no-console */\nimport webpack from 'webpack';\nimport config from '../webpack.config.prod';\nimport {chalkError, chalkSuccess, chalkWarning, chalkProcessing} from './chalkConfig';\n\nprocess.env.NODE_ENV = 'production'; // this assures React is built in prod mode and that the Babel dev config doesn't apply.\n\nconsole.log(chalkProcessing('Generating minified bundle. This will take a moment...'));\n\nwebpack(config).run((error, stats) => {\n  if (error) { // so a fatal error occurred. Stop here.\n    console.log(chalkError(error));\n    return 1;\n  }\n\n  const jsonStats = stats.toJson();\n\n  if (jsonStats.hasErrors) {\n    return jsonStats.errors.map(error => console.log(chalkError(error)));\n  }\n\n  if (jsonStats.hasWarnings) {\n    console.log(chalkWarning('Webpack generated the following warnings: '));\n    jsonStats.warnings.map(warning => console.log(chalkWarning(warning)));\n  }\n\n  console.log(`Webpack stats: ${stats}`);\n\n  // if we got this far, the build succeeded.\n  console.log(chalkSuccess('Your app is compiled in production mode in /dist. It\\'s ready to roll!'));\n\n  return 0;\n});\n"
+      ]
+    },
+    "mtime": 1524145601292
+  },
+  "{\"filename\":\"/app/webpack.config.prod.js\",\"env\":{\"development\":{\"plugins\":[]}},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"transforms\":[{\"transform\":\"/app/node_modules/react-transform-hmr/lib/index.js\",\"imports\":[\"react\"],\"locals\":[\"module\"]},{\"transform\":\"/app/node_modules/react-transform-catch-errors/lib/index.js\",\"imports\":[\"react\",\"/app/node_modules/redbox-react/lib/index.js\"]}]}],[[],null],[[],null],[[],null],[[],null],[[],{\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}],[[],{\"spec\":false,\"loose\":false}]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"sourceRoot\":\"/app\",\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false,\"parserOpts\":false,\"generatorOpts\":false}:6.26.0": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [
+          {
+            "source": "webpack",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "webpack"
+              }
+            ]
+          },
+          {
+            "source": "extract-text-webpack-plugin",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "ExtractTextPlugin"
+              }
+            ]
+          },
+          {
+            "source": "webpack-md5-hash",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "WebpackMd5Hash"
+              }
+            ]
+          },
+          {
+            "source": "html-webpack-plugin",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "HtmlWebpackPlugin"
+              }
+            ]
+          },
+          {
+            "source": "path",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "path"
+              }
+            ]
+          }
+        ],
+        "exports": {
+          "exported": [],
+          "specifiers": []
+        }
+      }
+    },
+    "options": {
+      "filename": "/app/webpack.config.prod.js",
+      "filenameRelative": "/app/webpack.config.prod.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "transforms": [
+              {
+                "transform": "/app/node_modules/react-transform-hmr/lib/index.js",
+                "imports": [
+                  "react"
+                ],
+                "locals": [
+                  "module"
+                ]
+              },
+              {
+                "transform": "/app/node_modules/react-transform-catch-errors/lib/index.js",
+                "imports": [
+                  "react",
+                  "/app/node_modules/redbox-react/lib/index.js"
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ],
+        [
+          [],
+          {
+            "spec": false,
+            "loose": false
+          }
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMaps": "both",
+      "sourceMapTarget": "webpack.config.prod.js",
+      "sourceFileName": "webpack.config.prod.js",
+      "sourceRoot": "/app",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleRoot": "/app",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "parserOpts": false,
+      "generatorOpts": false,
+      "basename": "webpack.config.prod"
+    },
+    "ignored": false,
+    "code": "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _webpack = require('webpack');\n\nvar _webpack2 = _interopRequireDefault(_webpack);\n\nvar _extractTextWebpackPlugin = require('extract-text-webpack-plugin');\n\nvar _extractTextWebpackPlugin2 = _interopRequireDefault(_extractTextWebpackPlugin);\n\nvar _webpackMd5Hash = require('webpack-md5-hash');\n\nvar _webpackMd5Hash2 = _interopRequireDefault(_webpackMd5Hash);\n\nvar _htmlWebpackPlugin = require('html-webpack-plugin');\n\nvar _htmlWebpackPlugin2 = _interopRequireDefault(_htmlWebpackPlugin);\n\nvar _path = require('path');\n\nvar _path2 = _interopRequireDefault(_path);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar GLOBALS = {\n  'process.env.NODE_ENV': JSON.stringify('production'),\n  __DEV__: false\n}; // For info about this file refer to webpack and webpack-hot-middleware documentation\n// For info on how we're generating bundles with hashed filenames for cache busting: https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w99i89nsz\nexports.default = {\n  resolve: {\n    extensions: ['*', '.js', '.jsx', '.json']\n  },\n  devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/\n  entry: _path2.default.resolve(__dirname, 'src/index'),\n  target: 'web',\n  output: {\n    path: _path2.default.resolve(__dirname, 'dist'),\n    publicPath: '/',\n    filename: '[name].[chunkhash].js'\n  },\n  plugins: [\n  // Hash the files using MD5 so that their names change when the content changes.\n  new _webpackMd5Hash2.default(),\n\n  // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html\n  new _webpack2.default.DefinePlugin(GLOBALS),\n\n  // Generate an external css file with a hash in the filename\n  new _extractTextWebpackPlugin2.default('[name].[contenthash].css'),\n\n  // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage\n  new _htmlWebpackPlugin2.default({\n    template: 'src/index.ejs',\n    favicon: 'src/favicon.ico',\n    minify: {\n      removeComments: true,\n      collapseWhitespace: true,\n      removeRedundantAttributes: true,\n      useShortDoctype: true,\n      removeEmptyAttributes: true,\n      removeStyleLinkTypeAttributes: true,\n      keepClosingSlash: true,\n      minifyJS: true,\n      minifyCSS: true,\n      minifyURLs: true\n    },\n    inject: true,\n    // Note that you can add custom options here if you need to handle other custom logic in index.html\n    // To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token below.\n    trackJSToken: ''\n  }),\n\n  // Minify JS\n  new _webpack2.default.optimize.UglifyJsPlugin({ sourceMap: true })],\n  module: {\n    rules: [{\n      test: /\\.jsx?$/,\n      exclude: /node_modules/,\n      use: ['babel-loader']\n    }, {\n      test: /\\.eot(\\?v=\\d+.\\d+.\\d+)?$/,\n      use: [{\n        loader: 'url-loader',\n        options: {\n          context: _path2.default.resolve(__dirname, \"./src/\"),\n          name: '[path][name].[ext]'\n        }\n      }]\n    }, {\n      test: /\\.woff(2)?(\\?v=[0-9]\\.[0-9]\\.[0-9])?$/,\n      use: [{\n        loader: 'url-loader',\n        options: {\n          limit: 10000,\n          mimetype: 'application/font-woff',\n          context: _path2.default.resolve(__dirname, \"./src/\"),\n          name: '[path][name].[ext]'\n        }\n      }]\n    }, {\n      test: /\\.[ot]tf(\\?v=\\d+.\\d+.\\d+)?$/,\n      use: [{\n        loader: 'url-loader',\n        options: {\n          limit: 10000,\n          mimetype: 'application/octet-stream',\n          context: _path2.default.resolve(__dirname, \"./src/\"),\n          name: '[path][name].[ext]'\n        }\n      }]\n    }, {\n      test: /\\.svg(\\?v=\\d+\\.\\d+\\.\\d+)?$/,\n      use: [{\n        loader: 'url-loader',\n        options: {\n          limit: 10000,\n          mimetype: 'image/svg+xml',\n          context: _path2.default.resolve(__dirname, \"./src/\"),\n          name: '[path][name].[ext]'\n        }\n      }]\n    }, {\n      test: /\\.(jpe?g|png|gif|ico)$/i,\n      use: [{\n        loader: 'file-loader',\n        options: {\n          context: _path2.default.resolve(__dirname, \"./src/\"),\n          name: '[path][name].[ext]'\n        }\n      }]\n    }, {\n      test: /(\\.css|\\.scss|\\.sass)$/,\n      use: _extractTextWebpackPlugin2.default.extract({\n        use: [{\n          loader: 'css-loader',\n          options: {\n            minimize: true,\n            sourceMap: true\n          }\n        }, {\n          loader: 'postcss-loader',\n          options: {\n            plugins: function plugins() {\n              return [require('autoprefixer')];\n            },\n            sourceMap: true\n          }\n        }, {\n          loader: 'sass-loader',\n          options: {\n            includePaths: [_path2.default.resolve(__dirname, 'src', 'scss')],\n            sourceMap: true\n          }\n        }]\n      })\n    }]\n  }\n};\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2suY29uZmlnLnByb2QuanMiXSwibmFtZXMiOlsiR0xPQkFMUyIsIkpTT04iLCJzdHJpbmdpZnkiLCJfX0RFVl9fIiwicmVzb2x2ZSIsImV4dGVuc2lvbnMiLCJkZXZ0b29sIiwiZW50cnkiLCJfX2Rpcm5hbWUiLCJ0YXJnZXQiLCJvdXRwdXQiLCJwYXRoIiwicHVibGljUGF0aCIsImZpbGVuYW1lIiwicGx1Z2lucyIsIkRlZmluZVBsdWdpbiIsInRlbXBsYXRlIiwiZmF2aWNvbiIsIm1pbmlmeSIsInJlbW92ZUNvbW1lbnRzIiwiY29sbGFwc2VXaGl0ZXNwYWNlIiwicmVtb3ZlUmVkdW5kYW50QXR0cmlidXRlcyIsInVzZVNob3J0RG9jdHlwZSIsInJlbW92ZUVtcHR5QXR0cmlidXRlcyIsInJlbW92ZVN0eWxlTGlua1R5cGVBdHRyaWJ1dGVzIiwia2VlcENsb3NpbmdTbGFzaCIsIm1pbmlmeUpTIiwibWluaWZ5Q1NTIiwibWluaWZ5VVJMcyIsImluamVjdCIsInRyYWNrSlNUb2tlbiIsIm9wdGltaXplIiwiVWdsaWZ5SnNQbHVnaW4iLCJzb3VyY2VNYXAiLCJtb2R1bGUiLCJydWxlcyIsInRlc3QiLCJleGNsdWRlIiwidXNlIiwibG9hZGVyIiwib3B0aW9ucyIsImNvbnRleHQiLCJuYW1lIiwibGltaXQiLCJtaW1ldHlwZSIsImV4dHJhY3QiLCJtaW5pbWl6ZSIsInJlcXVpcmUiLCJpbmNsdWRlUGF0aHMiXSwibWFwcGluZ3MiOiI7Ozs7OztBQUVBOzs7O0FBQ0E7Ozs7QUFDQTs7OztBQUNBOzs7O0FBQ0E7Ozs7OztBQUVBLElBQU1BLFVBQVU7QUFDZCwwQkFBd0JDLEtBQUtDLFNBQUwsQ0FBZSxZQUFmLENBRFY7QUFFZEMsV0FBUztBQUZLLENBQWhCLEMsQ0FSQTtBQUNBO2tCQVllO0FBQ2JDLFdBQVM7QUFDUEMsZ0JBQVksQ0FBQyxHQUFELEVBQU0sS0FBTixFQUFhLE1BQWIsRUFBcUIsT0FBckI7QUFETCxHQURJO0FBSWJDLFdBQVMsWUFK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T0E7QUFDRE0sa0JBQVEsZ0JBRFA7QUFFREMsbUJBQVM7QUFDUDFCLHFCQUFTO0FBQUEscUJBQU0sQ0FDYmlDLFFBQVEsY0FBUixDQURhLENBQU47QUFBQSxhQURGO0FBSVBkLHVCQUFXO0FBSko7QUFGUixTQVBBLEVBZUE7QUFDRE0sa0JBQVEsYUFEUDtBQUVEQyxtQkFBUztBQUNQUSwwQkFBYyxDQUFDLGVBQUs1QyxPQUFMLENBQWFJLFNBQWIsRUFBd0IsS0FBeEIsRUFBK0IsTUFBL0IsQ0FBRCxDQURQO0FBRVB5Qix1QkFBVztBQUZKO0FBRlIsU0FmQTtBQUR3QixPQUExQjtBQUZQLEtBeEVLO0FBREQ7QUEvQ0ssQyIsImZpbGUiOiJ3ZWJwYWNrLmNvbmZpZy5wcm9kLmpzIiwic291cmNlUm9vdCI6Ii9hcHAiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBGb3IgaW5mbyBhYm91dCB0aGlzIGZpbGUgcmVmZXIgdG8gd2VicGFjayBhbmQgd2VicGFjay1ob3QtbWlkZGxld2FyZSBkb2N1bWVudGF0aW9uXG4vLyBGb3IgaW5mbyBvbiBob3cgd2UncmUgZ2VuZXJhdGluZyBidW5kbGVzIHdpdGggaGFzaGVkIGZpbGVuYW1lcyBmb3IgY2FjaGUgYnVzdGluZzogaHR0cHM6Ly9tZWRpdW0uY29tL0Bva29uZXRjaG5pa292L2xvbmctdGVybS1jYWNoaW5nLW9mLXN0YXRpYy1hc3NldHMtd2l0aC13ZWJwYWNrLTFlY2IxMzlhZGI5NSMudzk5aTg5bnN6XG5pbXBvcnQgd2VicGFjayBmcm9tICd3ZWJwYWNrJztcbmltcG9ydCBFeHRyYWN0VGV4dFBsdWdpbiBmcm9tICdleHRyYWN0LXRleHQtd2VicGFjay1wbHVnaW4nO1xuaW1wb3J0IFdlYnBhY2tNZDVIYXNoIGZyb20gJ3dlYnBhY2stbWQ1LWhhc2gnO1xuaW1wb3J0IEh0bWxXZWJwYWNrUGx1Z2luIGZyb20gJ2h0bWwtd2VicGFjay1wbHVnaW4nO1xuaW1wb3J0IHBhdGggZnJvbSAncGF0aCc7XG5cbmNvbnN0IEdMT0JBTFMgPSB7XG4gICdwcm9jZXNzLmVudi5OT0RFX0VOVic6IEpTT04uc3RyaW5naWZ5KCdwcm9kdWN0aW9uJyksXG4gIF9fREVWX186IGZhbHNlXG59O1xuXG5leHBvcnQgZGVmYXVsdCB7XG4gIHJlc29sdmU6IHtcbiAgICBleHRlbnNpb25zOiBbJyonLCAnLmpzJywgJy5qc3gnLCAnLmpzb24nXVxuICB9LFxuICBkZXZ0b29sOiAnc291cmNlLW1hcCcsIC8vIG1vcmUgaW5mbzpodHRwczovL3dlYnBhY2suanMub3JnL2d1aWRlcy9wcm9kdWN0aW9uLyNzb3VyY2UtbWFwcGluZyBhbmQgaHR0cHM6Ly93ZWJwYWNrLmpzLm9yZy9jb25maWd1cmF0aW9uL2RldnRvb2wvXG4gIGVudHJ5OiBwYXRoLnJlc29sdmUoX19kaXJuYW1lLCAnc3JjL2luZGV4JyksXG4gIHRhcmdldDogJ3dlYicsXG4gIG91dHB1dDoge1xuICAgIHBhdGg6IHBhdGgucmVzb2x2ZShfX2Rpcm5hbWUsICdkaXN0JyksXG4gICAgcHVibGljUGF0aDogJy8nLFxuICAgIGZpbGVuYW1lOiAnW25hbWVdLltjaHVua2hhc2hdLmpzJ1xuICB9LFxuICBwbHVnaW5zOiBbXG4gICAgLy8gSGFzaCB0aGUgZmlsZXMgdXNpbmcgTUQ1IHNvIHRoYXQgdGhlaXIgbmFtZXMgY2hhbmdlIHdoZW4gdGhlIGNvbnRlbnQgY2hhbmdlcy5cbiAgICBuZXcgV2VicGFja01kNUhhc2goKSxcblxuICAgIC8vIFRlbGxzIFJlYWN0IHRvIGJ1aWxkIGluIHByb2QgbW9kZS4gaHR0cHM6Ly9mYWNlYm9vay5naXRodWIuaW8vcmVhY3QvZG93bmxvYWRzLmh0bWxcbiAgICBuZXcgd2VicGFjay5EZWZpbmVQbHVnaW4oR0xPQkFMUyksXG5cbiAgICAvLyBHZW5lcmF0ZSBhbiBleHRlcm5hbCBjc3MgZmlsZSB3aXRoIGEgaGFzaCBpbiB0aGUgZmlsZW5hbWVcbiAgICBuZXcgRXh0cmFjdFRleHRQbHVnaW4oJ1tuYW1lXS5bY29udGVudGhhc2hdLmNzcycpLFxuXG4gICAgLy8gR2VuZXJhdGUgSFRNTCBmaWxlIHRoYXQgY29udGFpbnMgcmVmZXJlbmNlcyB0byBnZW5lcmF0ZWQgYnVuZGxlcy4gU2VlIGhlcmUgZm9yIGhvdyB0aGlzIHdvcmtzOiBodHRwczovL2dpdGh1Yi5jb20vYW1wZWRhbmR3aXJlZC9odG1sLXdlYnBhY2stcGx1Z2luI2Jhc2ljLXVzYWdlXG4gICAgbmV3IEh0bWxXZWJwYWNrUGx1Z2luKHtcbiAgICAgIHRlbXBsYXRlOiAnc3JjL2luZGV4LmVqcycsXG4gICAgICBmYXZpY29uOiAnc3JjL2Zhdmljb24uaWNvJyxcbiAgICAgIG1pbmlmeToge1xuICAgICAgICByZW1vdmVDb21tZW50czogdHJ1ZSxcbiAgICAgICAgY29sbGFwc2VXaGl0ZXNwYWNlOiB0cnVlLFxuICAgICAgICByZW1vdmVSZWR1bmRhbnRBdHRyaWJ1dGVzOiB0cnVlLFxuICAgICAgICB1c2VTaG9ydERvY3R5cGU6IHRydWUsXG4gICAgICAgIHJlbW92ZUVtcHR5QXR0cmlidXRlczogdHJ1ZSxcbiAgICAgICAgcmVtb3ZlU3R5bGVMaW5rVHlwZUF0dHJpYnV0ZXM6IHRydWUsXG4gICAgICAgIGtlZXBDbG9zaW5nU2xhc2g6IHRydWUsXG4gICAgICAgIG1pbmlmeUpTOiB0cnVlLFxuICAgICAgICBtaW5pZnlDU1M6IHRydWUsXG4gICAgICAgIG1pbmlmeVVSTHM6IHRydWVcbiAgICAgIH0sXG4gICAgICBpbmplY3Q6IHRydWUsXG4gICAgICAvLyBOb3RlIHRoYXQgeW91IGNhbiBhZGQgY3VzdG9tIG9wdGlvbnMgaGVyZSBpZiB5b3UgbmVlZCB0byBoYW5kbGUgb3RoZXIgY3VzdG9tIGxvZ2ljIGluIGluZGV4Lmh0bWxcbiAgICAgIC8vIFRvIHRyYWNrIEphdmFTY3JpcHQgZXJyb3JzIHZpYSBUcmFja0pTLCBzaWduIHVwIGZvciBhIGZyZWUgdHJpYWwgYXQgVHJhY2tKUy5jb20gYW5kIGVudGVyIHlvdXIgdG9rZW4gYmVsb3cuXG4gICAgICB0cmFja0pTVG9rZW46ICcnXG4gICAgfSksXG5cbiAgICAvLyBNaW5pZnkgSlNcbiAgICBuZXcgd2VicGFjay5vcHRpbWl6ZS5VZ2xpZnlKc1BsdWdpbih7IHNvdXJjZU1hcDogdHJ1ZSB9KSxcbiAgXSxcbiAgbW9kdWxlOiB7XG4gICAgcnVsZXM6IFtcbiAgICAgIHtcbiAgICAgICAgdGVzdDogL1xcLmpzeD8kLyxcbiAgICAgICAgZXhjbHVkZTogL25vZGVfbW9kdWxlcy8sXG4gICAgICAgIHVzZTogWydiYWJlbC1sb2FkZXInXVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgdGVzdDogL1xcLmVvdChcXD92PVxcZCsuXFxkKy5cXGQrKT8kLyxcbiAgICAgICAgdXNlOiBbXG4gICAgICAgICAge1xuICAgICAgICAgICAgbG9hZGVyOiAndXJsLWxvYWRlcicsXG4gICAgICAgICAgICBvcHRpb25zOiB7XG4gICAgICAgICAgICAgIGNvbnRleHQ6IHBhdGgucmVzb2x2ZShfX2Rpcm5hbWUsIFwiLi9zcmMvXCIpLFxuICAgICAgICAgICAgICBuYW1lOiAnW3BhdGhdW25hbWVdLltleHRdJ1xuICAgICAgICAgICAgfVxuICAgICAgICAgIH1cbiAgICAgICAgXVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgdGVzdDogL1xcLndvZmYoMik/KFxcP3Y9WzAtOV1cXC5bMC05XVxcLlswLTldKT8kLyxcbiAgICAgICAgdXNlOiBbXG4gICAgICAgICAge1xuICAgICAgICAgICAgbG9hZGVyOiAndXJsLWxvYWRlcicsXG4gICAgICAgICAgICBvcHRpb25zOiB7XG4gICAgICAgICAgICAgIGxpbWl0OiAxMDAwMCxcbiAgICAgICAgICAgICAgbWltZXR5cGU6ICdhcHBsaWNhdGlvbi9mb250LXdvZmYnLFxuICAgICAgICAgICAgICBjb250ZXh0OiBwYXRoLnJlc29sdmUoX19kaXJuYW1lLCBcIi4vc3JjL1wiKSxcbiAgICAgICAgICAgICAgbmFtZTogJ1twYXRoXVtuYW1lXS5bZXh0XSdcbiAgICAgICAgICAgIH1cbiAgICAgICAgICB9XG4gICAgICAgIF1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIHRlc3Q6IC9cXC5bb3RddGYoXFw/dj1cXGQrLlxcZCsuXFxkKyk/JC8sXG4gICAgICAgIHVzZTogW1xuICAgICAgICAgIHtcbiAgICAgICAgICAgIGxvYWRlcjogJ3VybC1sb2FkZXInLFxuICAgICAgICAgICAgb3B0aW9uczoge1xuICAgICAgICAgICAgICBsaW1pdDogMTAwMDAsXG4gICAgICAgICAgICAgIG1pbWV0eXBlOiAnYXBwbGljYXRpb24vb2N0ZXQtc3RyZWFtJyxcbiAgICAgICAgICAgICAgY29udGV4dDogcGF0aC5yZXNvbHZlKF9fZGlybmFtZSwgXCIuL3NyYy9cIiksXG4gICAgICAgICAgICAgIG5hbWU6ICdbcGF0aF1bbmFtZV0uW2V4dF0nXG4gICAgICAgICAgICB9XG4gICAgICAgICAgfVxuICAgICAgICBdXG4gICAgICB9LFxuICAgICAge1xuICAgICAgICB0ZXN0OiAvXFwuc3ZnKFxcP3Y9XFxkK1xcLlxcZCtcXC5cXGQrKT8kLyxcbiAgICAgICAgdXNlOiBbXG4gICAgICAgICAge1xuICAgICAgICAgICAgbG9hZGVyOiAndXJsLWxvYWRlcicsXG4gICAgICAgICAgICBvcHRpb25zOiB7XG4gICAgICAgICAgICAgIGxpbWl0OiAxMDAwMCxcbiAgICAgICAgICAgICAgbWltZXR5cGU6ICdpbWFnZS9zdmcreG1sJyxcbiAgICAgICAgICAgICAgY29udGV4dDogcGF0aC5yZXNvbHZlKF9fZGlybmFtZSwgXCIuL3NyYy9cIiksXG4gICAgICAgICAgICAgIG5hbWU6ICdbcGF0aF1bbmFtZV0uW2V4dF0nXG4gICAgICAgICAgICB9XG4gICAgICAgICAgfVxuICAgICAgICBdXG4gICAgICB9LFxuICAgICAge1xuICAgICAgICB0ZXN0OiAvXFwuKGpwZT9nfHBuZ3xnaWZ8aWNvKSQvaSxcbiAgICAgICAgdXNlOiBbXG4gICAgICAgICAge1xuICAgICAgICAgICAgbG9hZGVyOiAnZmlsZS1sb2FkZXInLFxuICAgICAgICAgICAgb3B0aW9uczoge1xuICAgICAgICAgICAgICBjb250ZXh0OiBwYXRoLnJlc29sdmUoX19kaXJuYW1lLCBcIi4vc3JjL1wiKSxcbiAgICAgICAgICAgICAgbmFtZTogJ1twYXRoXVtuYW1lXS5bZXh0XSdcbiAgICAgICAgICAgIH1cbiAgICAgICAgICB9XG4gICAgICAgIF1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIHRlc3Q6IC8oXFwuY3NzfFxcLnNjc3N8XFwuc2FzcykkLyxcbiAgICAgICAgdXNlOiBFeHRyYWN0VGV4dFBsdWdpbi5leHRyYWN0KHtcbiAgICAgICAgICB1c2U6IFtcbiAgICAgICAgICAgIHtcbiAgICAgICAgICAgICAgbG9hZGVyOiAnY3NzLWxvYWRlcicsXG4gICAgICAgICAgICAgIG9wdGlvbnM6IHtcbiAgICAgICAgICAgICAgICBtaW5pbWl6ZTogdHJ1ZSxcbiAgICAgICAgICAgICAgICBzb3VyY2VNYXA6IHRydWVcbiAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfSwge1xuICAgICAgICAgICAgICBsb2FkZXI6ICdwb3N0Y3NzLWxvYWRlcicsXG4gICAgICAgICAgICAgIG9wdGlvbnM6IHtcbiAgICAgICAgICAgICAgICBwbHVnaW5zOiAoKSA9PiBbXG4gICAgICAgICAgICAgICAgICByZXF1aXJlKCdhdXRvcHJlZml4ZXInKVxuICAgICAgICAgICAgICAgIF0sXG4gICAgICAgICAgICAgICAgc291cmNlTWFwOiB0cnVlXG4gICAgICAgICAgICAgIH1cbiAgICAgICAgICAgIH0sIHtcbiAgICAgICAgICAgICAgbG9hZGVyOiAnc2Fzcy1sb2FkZXInLFxuICAgICAgICAgICAgICBvcHRpb25zOiB7XG4gICAgICAgICAgICAgICAgaW5jbHVkZVBhdGhzOiBbcGF0aC5yZXNvbHZlKF9fZGlybmFtZSwgJ3NyYycsICdzY3NzJyldLFxuICAgICAgICAgICAgICAgIHNvdXJjZU1hcDogdHJ1ZVxuICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgICAgXVxuICAgICAgICB9KVxuICAgICAgfVxuICAgIF1cbiAgfVxufTtcbiJdfQ==",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "webpack.config.prod.js"
+      ],
+      "names": [
+        "GLOBALS",
+        "JSON",
+        "stringify",
+        "__DEV__",
+        "resolve",
+        "extensions",
+        "devtool",
+        "entry",
+        "__dirname",
+        "target",
+        "output",
+        "path",
+        "publicPath",
+        "filename",
+        "plugins",
+        "DefinePlugin",
+        "template",
+        "favicon",
+        "minify",
+        "removeComments",
+        "collapseWhitespace",
+        "removeRedundantAttributes",
+        "useShortDoctype",
+        "removeEmptyAttributes",
+        "removeStyleLinkTypeAttributes",
+        "keepClosingSlash",
+        "minifyJS",
+        "minifyCSS",
+        "minifyURLs",
+        "inject",
+        "trackJSToken",
+        "optimize",
+        "UglifyJsPlugin",
+        "sourceMap",
+        "module",
+        "rules",
+        "test",
+        "exclude",
+        "use",
+        "loader",
+        "options",
+        "context",
+        "name",
+        "limit",
+        "mimetype",
+        "extract",
+        "minimize",
+        "require",
+        "includePaths"
+      ],
+      "mappings": "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",
+      "file": "webpack.config.prod.js",
+      "sourceRoot": "/app",
+      "sourcesContent": [
+        "// For info about this file refer to webpack and webpack-hot-middleware documentation\n// For info on how we're generating bundles with hashed filenames for cache busting: https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w99i89nsz\nimport webpack from 'webpack';\nimport ExtractTextPlugin from 'extract-text-webpack-plugin';\nimport WebpackMd5Hash from 'webpack-md5-hash';\nimport HtmlWebpackPlugin from 'html-webpack-plugin';\nimport path from 'path';\n\nconst GLOBALS = {\n  'process.env.NODE_ENV': JSON.stringify('production'),\n  __DEV__: false\n};\n\nexport default {\n  resolve: {\n    extensions: ['*', '.js', '.jsx', '.json']\n  },\n  devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/\n  entry: path.resolve(__dirname, 'src/index'),\n  target: 'web',\n  output: {\n    path: path.resolve(__dirname, 'dist'),\n    publicPath: '/',\n    filename: '[name].[chunkhash].js'\n  },\n  plugins: [\n    // Hash the files using MD5 so that their names change when the content changes.\n    new WebpackMd5Hash(),\n\n    // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html\n    new webpack.DefinePlugin(GLOBALS),\n\n    // Generate an external css file with a hash in the filename\n    new ExtractTextPlugin('[name].[contenthash].css'),\n\n    // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage\n    new HtmlWebpackPlugin({\n      template: 'src/index.ejs',\n      favicon: 'src/favicon.ico',\n      minify: {\n        removeComments: true,\n        collapseWhitespace: true,\n        removeRedundantAttributes: true,\n        useShortDoctype: true,\n        removeEmptyAttributes: true,\n        removeStyleLinkTypeAttributes: true,\n        keepClosingSlash: true,\n        minifyJS: true,\n        minifyCSS: true,\n        minifyURLs: true\n      },\n      inject: true,\n      // Note that you can add custom options here if you need to handle other custom logic in index.html\n      // To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token below.\n      trackJSToken: ''\n    }),\n\n    // Minify JS\n    new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),\n  ],\n  module: {\n    rules: [\n      {\n        test: /\\.jsx?$/,\n        exclude: /node_modules/,\n        use: ['babel-loader']\n      },\n      {\n        test: /\\.eot(\\?v=\\d+.\\d+.\\d+)?$/,\n        use: [\n          {\n            loader: 'url-loader',\n            options: {\n              context: path.resolve(__dirname, \"./src/\"),\n              name: '[path][name].[ext]'\n            }\n          }\n        ]\n      },\n      {\n        test: /\\.woff(2)?(\\?v=[0-9]\\.[0-9]\\.[0-9])?$/,\n        use: [\n          {\n            loader: 'url-loader',\n            options: {\n              limit: 10000,\n              mimetype: 'application/font-woff',\n              context: path.resolve(__dirname, \"./src/\"),\n              name: '[path][name].[ext]'\n            }\n          }\n        ]\n      },\n      {\n        test: /\\.[ot]tf(\\?v=\\d+.\\d+.\\d+)?$/,\n        use: [\n          {\n            loader: 'url-loader',\n            options: {\n              limit: 10000,\n              mimetype: 'application/octet-stream',\n              context: path.resolve(__dirname, \"./src/\"),\n              name: '[path][name].[ext]'\n            }\n          }\n        ]\n      },\n      {\n        test: /\\.svg(\\?v=\\d+\\.\\d+\\.\\d+)?$/,\n        use: [\n          {\n            loader: 'url-loader',\n            options: {\n              limit: 10000,\n              mimetype: 'image/svg+xml',\n              context: path.resolve(__dirname, \"./src/\"),\n              name: '[path][name].[ext]'\n            }\n          }\n        ]\n      },\n      {\n        test: /\\.(jpe?g|png|gif|ico)$/i,\n        use: [\n          {\n            loader: 'file-loader',\n            options: {\n              context: path.resolve(__dirname, \"./src/\"),\n              name: '[path][name].[ext]'\n            }\n          }\n        ]\n      },\n      {\n        test: /(\\.css|\\.scss|\\.sass)$/,\n        use: ExtractTextPlugin.extract({\n          use: [\n            {\n              loader: 'css-loader',\n              options: {\n                minimize: true,\n                sourceMap: true\n              }\n            }, {\n              loader: 'postcss-loader',\n              options: {\n                plugins: () => [\n                  require('autoprefixer')\n                ],\n                sourceMap: true\n              }\n            }, {\n              loader: 'sass-loader',\n              options: {\n                includePaths: [path.resolve(__dirname, 'src', 'scss')],\n                sourceMap: true\n              }\n            }\n          ]\n        })\n      }\n    ]\n  }\n};\n"
+      ]
+    },
+    "mtime": 1524145601292
   }
 }

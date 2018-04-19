@@ -2,7 +2,7 @@ version: "2"
 services:
 
   website:
-    build: ./Dockerfile
+    build: ./../images/nginx
     volumes:
       - ./../../dist:/app
     ports:
