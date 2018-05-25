@@ -30,7 +30,7 @@
   "author": "Rick van Lieshout",
   "license": "MIT",
   "dependencies": {
-    "material-ui": "^1.0.0-beta.42",
+    "material-ui": "^1.0.0-beta.47",
     "object-assign": "4.1.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",

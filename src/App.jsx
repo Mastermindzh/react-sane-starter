@@ -2,13 +2,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Routes from "./../constants/routes";
-import HomePage from "./../containers/home/home-container.jsx";
-import AboutPage from "./../containers/about/about-container.jsx";
-import ErrorPage from "./../containers/error/error-container.jsx";
-import NavBar from "./layout/toolbar/toolbar.jsx";
-
-import AppDrawer from "./layout/drawer/drawer.jsx";
+import Routes from "./constants/routes";
+import HomePage from "./containers/home/home-container.jsx";
+import AboutPage from "./containers/about/about-container.jsx";
+import ErrorPage from "./containers/error/error-container.jsx";
+import { Toolbar as NavBar, Drawer as AppDrawer } from "./components";
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -31,8 +29,8 @@ class App extends React.Component {
 
         <AppDrawer
           open={this.state.drawerOpen}
-          onClose={() => this.setState({drawerOpen: false})}
-          activeStyle = {activeStyle}
+          onClose={() => this.setState({ drawerOpen: false })}
+          activeStyle={activeStyle}
           items={[
             {
               icon: "home",
