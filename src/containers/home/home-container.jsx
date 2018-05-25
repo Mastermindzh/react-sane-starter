@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { changeColor } from './../../actions/color-actions/color-actions.jsx';
 import PropTypes from "prop-types";
-import Footer from "./../../components/layout/footer.jsx";
+import {Footer} from "./../../components/";
 import {getRandomColor} from "./../../utils/colors/colors";
 
 export class HomePage extends Component {
