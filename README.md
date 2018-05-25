@@ -6,13 +6,6 @@ A sane starting point for react+redux development.
 
 The starter app includes a working example app(+tests) which should help you get started fast.
 
-## Branches
-This starter has a few neat tricks up it's sleeve! Check out the other branches below for some extra cool stuff!
-
-- [material-design](https://github.com/Mastermindzh/react-sane-starter/tree/material-design) - This branch includes material-ui
-- [sphinx](https://github.com/Mastermindzh/react-sane-starter/tree/sphinx) - The sphinx branch includes sphinx documentation tools! Go check it out!
-
-
 ## Material design
 This branch includes the [material components for the web](https://material.io/components/web/), specifically it uses [Material-ui](https://material-ui-next.com/)
 
