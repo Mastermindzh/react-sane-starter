@@ -53,31 +53,36 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 
 ## Directory structure
 The code block below covers the relevant directory structure and explains what the folders do.
+This structure will bundle global / reusable code together and keep specific code close to it's owner.
 
 ``` js
 .
 ├── docker
-│   ├── dev  // Development docker-compose and dockerfile
-│   │   ├── docker-compose.yml
-│   │   └── Dockerfile
+│   ├── dev // Development docker-compose file
+│   │   └── docker-compose.yml
+│   ├── images // Docker images used in dev/prod compose files
+│   │   ├── nginx
+│   │   │   ├── default.conf // nginx conf for javascript SPA's
+│   │   │   └── Dockerfile
+│   │   └── node
+│   │       └── Dockerfile
 │   └── prod // Production docker files
-│       ├── docker-compose.yml
-│       ├── Dockerfile
-│       └── default.conf // nginx conf for javascript SPA's
-│
+│       └── docker-compose.yml
+|
 ├── docs // directory for your documentation
 │
 ├── src
 │   ├── actions // actions go here
 │   ├── assets // directory for statis assets
-│   ├── components // dumb components go here
+│   ├── components // global components go here (buttons, list items, etc)
 │   ├── constants // constants can be declared here
-│   ├── containers // smart components go here
+│   ├── containers // smart components go here (each in it's own folder)
+|   |   └── /container/components // containers might use container-specific components, these go in here.
 │   ├── reducers // reducers go here
 │   ├── store
 │   ├── styles // scss + css
 │   ├── tests // global test files
-│   ├── utils // utility classes / objects
+│   ├── utils // global utility classes / objects
 │   ├── favicon.ico
 │   ├── index.js
 │   ├── index.ejs
@@ -130,14 +135,14 @@ And the commands which you don't want/have to run yourself are:
 
 ## Running the production server
 This starter includes a production docker which is built on top of the NGINX Docker.
-The complete configuration for this container can be found under [docker/prod/default.conf](docker/prod/default.conf).
+The complete configuration for this container can be found under [docker/images/nginx/default.conf](docker/images/nginx/default.conf).
 
 The configuration boils down to the following procedure:
 
 1. Check whether a static file exists for the given url, if so serve it
 2. If it doesn't exist -> redirect to index.html
 
-It also ships with sane defaults for compressing assets and timeouts. IF you want to know the details, or change them, have a look at [docker/prod/default.conf](docker/prod/default.conf)
+It also ships with sane defaults for compressing assets and timeouts. IF you want to know the details, or change them, have a look at [docker/images/nginx/default.conf](docker/images/nginx/default.conf)
 
 ## Docker
 
