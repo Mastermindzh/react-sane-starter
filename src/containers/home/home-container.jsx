@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { changeColor } from './../../actions/color-actions/color-actions.jsx';
+import { changeColor } from './../../actions/color-actions/color-actions';
 import PropTypes from "prop-types";
 import {Footer} from "./../../components/";
 import {getRandomColor} from "./../../utils/colors/colors";

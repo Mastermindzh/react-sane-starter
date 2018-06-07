@@ -1,4 +1,4 @@
-import * as Actions from './color-actions.jsx';
+import * as Actions from './color-actions';
 import * as ActionTypes from './../../constants/action-types';
 
 describe('Color actions', () => {

@@ -1,5 +1,5 @@
 // import * as ActionTypes from '../constants/actionTypes';
-import reducer from './color-reducer.jsx';
+import reducer from './color-reducer';
 import initialState from './initialState';
 import { COLOR_ACTION_TYPES } from './../../constants/action-types';
 
